@@ -93,7 +93,7 @@ export default function CountriesServed() {
                             {/* Flipper: both faces share one grid cell, so the front sets the height */}
                             <div className="grid transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus:[transform:rotateY(180deg)] motion-reduce:transition-none">
                                 {/* FRONT */}
-                                <div className="flex flex-col rounded-3xl border border-white/10 bg-[#22211f] p-4 pb-7 [backface-visibility:hidden] [grid-area:1/1]">
+                                <div className="flex flex-col rounded-3xl border border-white/10 bg-[#ff4d12]/80 p-4 pb-7 [backface-visibility:hidden] [grid-area:1/1]">
                                     <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl bg-white">
                                         <div
                                             className="absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,rgba(255,77,18,0.18),transparent_65%)]"
@@ -126,7 +126,7 @@ export default function CountriesServed() {
                                 </div>
 
                                 {/* BACK */}
-                                <div className="flex flex-col justify-between rounded-3xl border border-[#ff4d12] bg-[#ff4d12] p-7 text-[#11100f] [backface-visibility:hidden] [grid-area:1/1] [transform:rotateY(180deg)] sm:p-8">
+                                <div className="flex flex-col justify-between rounded-3xl border border-[#ff4d12] bg-[#ff4d12]/80 p-7 text-[#11100f] [backface-visibility:hidden] [grid-area:1/1] [transform:rotateY(180deg)] sm:p-8">
                                     <div>
                                         <div className="h-14 w-14 overflow-hidden rounded-full ring-2 ring-[#11100f]/20">
                                             <Flag
