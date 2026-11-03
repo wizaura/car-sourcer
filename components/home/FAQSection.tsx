@@ -9,6 +9,7 @@ import {
     ChevronDown,
     MessageCircle,
 } from "lucide-react";
+import BrandButton from "../ui/BrandButton";
 
 const faqs = [
     {
@@ -89,7 +90,7 @@ export default function FAQ() {
 
     return (
         <section
-            id="faq"
+            id="faqs"
             className="overflow-hidden bg-[#faf5f2] py-20 text-[#171614]"
         >
             <div className="mx-auto max-w-[1440px] px-5 sm:px-10 lg:px-14">
@@ -162,22 +163,20 @@ export default function FAQ() {
                                             </span>
 
                                             <span
-                                                className={`block text-base font-medium leading-snug tracking-[-0.025em] transition-colors duration-300 sm:text-xl ${
-                                                    isOpen
+                                                className={`block text-base font-medium leading-snug tracking-[-0.025em] transition-colors duration-300 sm:text-xl ${isOpen
                                                         ? "text-[#ff4d12]"
                                                         : "text-[#171614] group-hover:text-[#ff4d12]"
-                                                }`}
+                                                    }`}
                                             >
                                                 {faq.question}
                                             </span>
                                         </span>
 
                                         <span
-                                            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 sm:h-11 sm:w-11 ${
-                                                isOpen
+                                            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 sm:h-11 sm:w-11 ${isOpen
                                                     ? "rotate-180 border-[#ff4d12] bg-[#ff4d12] text-white"
                                                     : "border-[#e5d8d0] bg-white/60 text-[#796a63] group-hover:border-[#ff4d12] group-hover:text-[#ff4d12]"
-                                            }`}
+                                                }`}
                                         >
                                             <ChevronDown size={18} />
                                         </span>
@@ -248,16 +247,15 @@ export default function FAQ() {
                             </div>
                         </div>
 
-                        <Link
-                            href="/contact"
-                            className="group inline-flex min-h-12 shrink-0 items-center justify-between gap-5 rounded-xl bg-[#171614] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff4d12]"
+                        <BrandButton
+                            href="#contact"
+                            variant="dark"
+                            size="lg"
+                            arrow="diagonal"
+                            className="shrink-0"
                         >
-                            <span>Talk to our team</span>
-                            <ArrowUpRight
-                                size={18}
-                                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                            />
-                        </Link>
+                            Talk to our team
+                        </BrandButton>
                     </motion.div>
                 </div>
             </div>

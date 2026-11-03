@@ -6,11 +6,13 @@ import Image from "next/image";
 const brands = [
   { name: "Mercedes-Benz", src: "/images/brands/mercedes-benz-logo.svg", width: 44 },
   { name: "BMW", src: "/images/brands/bmw-logo.svg", width: 44 },
-  { name: "Porsche", src: "/images/brands/porsche-logo.svg", width: 100 },
+  { name: "Nissan", src: "/images/brands/nissan-logo.svg", width: 100 },
   { name: "Land Rover", src: "/images/brands/land-rover-logo.svg", width: 100 },
   { name: "Audi", src: "/images/brands/audi-logo.svg", width: 78 },
   { name: "Toyota", src: "/images/brands/toyota-logo.svg", width: 90 },
-  { name: "Bentley", src: "/images/brands/bentley-logo.svg", width: 68 },
+  { name: "Honda", src: "/images/brands/honda-logo.png", width: 90 },
+  { name: "Ford", src: "/images/brands/ford-logo.png", width: 90 },
+  { name: "Volkswagen", src: "/images/brands/volkswagen-logo.svg", width: 68 },
 ];
 
 export default function BrandCarousel() {

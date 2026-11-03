@@ -58,7 +58,7 @@ export default function Hero() {
                     {/* CTAs */}
                     <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-9 sm:gap-4">
                         <BrandButton
-                            href="/contact"
+                            href="#contact"
                             variant="orange"
                             size="lg"
                         >

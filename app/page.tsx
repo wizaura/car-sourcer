@@ -1,4 +1,5 @@
 import BrandCarousel from "@/components/home/BrandCarousel";
+import ContactForm from "@/components/home/ContactForm";
 import CountriesServed from "@/components/home/CountriesSection";
 import FAQ from "@/components/home/FAQSection";
 import Hero from "@/components/home/Hero";
@@ -12,6 +13,7 @@ export default function Home() {
       <CountriesServed />
       <OurProcess />
       <FAQ />
+      <ContactForm />
     </div>
   );
 }

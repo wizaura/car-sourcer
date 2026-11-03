@@ -19,6 +19,7 @@ import {
     useTransform,
 } from "motion/react";
 import { useEffect, useRef } from "react";
+import BrandButton from "../ui/BrandButton";
 
 const steps = [
     {
@@ -486,10 +487,10 @@ export default function OurProcess() {
                         </svg>
                     </div>
 
-                        {/* Mobile road with synchronized SVG car */}
-                        <div className="pointer-events-none absolute bottom-8 left-[19px] top-5 w-10 lg:hidden">
-                            <MobileRoadCar progress={smoothProgress} />
-                        </div>
+                    {/* Mobile road with synchronized SVG car */}
+                    <div className="pointer-events-none absolute bottom-8 left-[19px] top-5 w-10 lg:hidden">
+                        <MobileRoadCar progress={smoothProgress} />
+                    </div>
 
 
                     {/* Steps */}
@@ -610,16 +611,15 @@ export default function OurProcess() {
                         </h3>
                     </div>
 
-                    <Link
-                        href="/contact"
-                        className="group inline-flex min-h-14 items-center justify-between gap-6 rounded-xl bg-[#ff4d12] px-5 py-2 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#e9440d]"
+                    <BrandButton
+                        href="#contact"
+                        variant="orange"
+                        size="lg"
+                        arrow="diagonal"
+                        className="w-full sm:w-auto"
                     >
-                        <span>Start your enquiry</span>
-
-                        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-[#ff4d12]">
-                            <ArrowUpRight size={20} />
-                        </span>
-                    </Link>
+                        Start your enquiry
+                    </BrandButton>
                 </motion.div>
             </div>
         </section>

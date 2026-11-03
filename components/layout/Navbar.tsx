@@ -7,10 +7,10 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import BrandButton from "@/components/ui/BrandButton";
 
 const navItems = [
-  { label: "Services", href: "#services" },
-  { label: "Our Cars", href: "#inventory" },
+  { label: "Countries", href: "#countries" },
+  // { label: "Our Cars", href: "#inventory" },
   { label: "Process", href: "#process" },
-  { label: "About Us", href: "#about" },
+  { label: "FAQs", href: "#faqs" },
 ];
 
 export default function Navbar() {
@@ -80,7 +80,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:block">
           <BrandButton
-            href="/contact"
+            href="#contact"
             variant="orange"
             size="md"
             className="rounded-xl"
