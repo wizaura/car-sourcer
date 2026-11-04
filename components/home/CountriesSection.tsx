@@ -3,10 +3,10 @@ import { ArrowUpRight } from "lucide-react";
 import {
     SA,
     KW,
-    QA,
-    OM,
     BH,
     GB,
+    ZA,
+    IR,
 } from "country-flag-icons/react/3x2";
 import type { FlagComponent } from "country-flag-icons/react/3x2";
 import BrandButton from "../ui/BrandButton";
@@ -31,14 +31,14 @@ const countries: Country[] = [
             "Hand-picked cars matched to your specification and budget, delivered with a single point of contact.",
     },
     {
-        name: "Qatar",
-        Flag: QA,
+        name: "South Africa",
+        Flag: ZA,
         description:
             "From search and inspection to export paperwork and delivery, we manage every step of the purchase.",
     },
     {
-        name: "Oman",
-        Flag: OM,
+        name: "Iran",
+        Flag: IR,
         description:
             "Access Dubai's wide selection of premium and performance cars without travelling for each viewing.",
     },
