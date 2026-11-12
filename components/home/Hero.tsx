@@ -6,7 +6,7 @@ import BrandButton from "../ui/BrandButton";
 
 export default function Hero() {
     return (
-        <section className="overflow-hidden bg-[#faf5f2] text-[#11100f]">
+        <section className="overflow-hidden bg-[#fff] text-[#11100f]">
             <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-5 pb-16 pt-12 sm:px-10 sm:pb-20 sm:pt-16 lg:min-h-[680px] lg:grid-cols-[1.2fr_0.8fr] lg:gap-6 lg:px-14 lg:pb-24 lg:pt-24">
                 {/* Left content */}
                 <div className="relative z-10">

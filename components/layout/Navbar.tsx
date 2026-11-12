@@ -43,7 +43,7 @@ export default function Navbar() {
         "fixed inset-x-0 top-0 z-50",
         "transition-all duration-300 ease-out",
         scrolled
-          ? "border-b border-[#e8dcd6]/80 bg-[#faf5f2]/95 shadow-[0_4px_24px_rgba(35,24,17,0.05)] backdrop-blur-xl"
+          ? "border-b border-[#e8dcd6]/80 bg-white/95 shadow-[0_4px_24px_rgba(35,24,17,0.05)] backdrop-blur-xl"
           : "border-b border-transparent bg-transparent",
       ].join(" ")}
     >

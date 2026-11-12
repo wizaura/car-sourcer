@@ -406,7 +406,7 @@ export default function OurProcess() {
     return (
         <section
             id="process"
-            className="overflow-hidden bg-[#faf5f2] text-[#11100f]"
+            className="overflow-hidden bg-white text-[#11100f]"
         >
             <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-10 sm:py-20 lg:px-14">
                 {/* Header */}

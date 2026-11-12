@@ -144,7 +144,7 @@ export default function ContactForm() {
     return (
         <section
             id="contact"
-            className="scroll-mt-20 overflow-hidden bg-[#faf5f2] py-20 text-[#171614]"
+            className="scroll-mt-20 overflow-hidden bg-white py-20 text-[#171614]"
         >
             <div className="mx-auto max-w-[1440px] px-5 sm:px-10 lg:px-14">
                 <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">

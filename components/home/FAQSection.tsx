@@ -91,7 +91,7 @@ export default function FAQ() {
     return (
         <section
             id="faqs"
-            className="overflow-hidden bg-[#faf5f2] py-20 text-[#171614]"
+            className="overflow-hidden bg-white py-20 text-[#171614]"
         >
             <div className="mx-auto max-w-[1440px] px-5 sm:px-10 lg:px-14">
                 {/* Header */}

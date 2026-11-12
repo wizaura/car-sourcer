@@ -17,7 +17,7 @@ const brands = [
 
 export default function BrandCarousel() {
   return (
-    <section className="overflow-hidden bg-[#faf5f2] pb-12 pt-2 sm:pb-16">
+    <section className="overflow-hidden bg-[#fff] pb-12 pt-2 sm:pb-16">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-10 lg:px-14">
         <div className="flex flex-col gap-6 border-t border-[#e8dcd6] pt-6 sm:flex-row sm:items-center sm:gap-12 sm:pt-8">
           <p className="max-w-[240px] shrink-0 text-sm leading-6 text-[#796a63]">
@@ -25,8 +25,8 @@ export default function BrandCarousel() {
           </p>
 
           <div className="relative min-w-0 flex-1 overflow-hidden">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-[#faf5f2] to-transparent sm:w-12" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-[#faf5f2] to-transparent sm:w-12" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 sm:w-12" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 sm:w-12" />
 
             <div className="brand-marquee flex w-max items-center gap-10 sm:gap-14">
               {[...brands, ...brands].map((brand, index) => (
