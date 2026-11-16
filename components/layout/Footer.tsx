@@ -46,7 +46,7 @@ export default function Footer() {
                             href="/"
                             className="inline-flex items-center text-3xl font-semibold tracking-[-0.07em] sm:text-4xl"
                         >
-                            carsourcer<span className="text-[#ff4d12]">.</span>
+                            98 Auto<span className="text-[#ff4d12]">.</span>
                         </Link>
 
                         <p className="mt-7 max-w-xl text-2xl font-medium leading-snug tracking-[-0.04em] text-[#faf5f2]/80 sm:text-3xl lg:text-4xl">

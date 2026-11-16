@@ -51,7 +51,7 @@ export default function Navbar() {
         {/* Brand */}
         <Link
           href="/"
-          aria-label="Car Sourcer home"
+          aria-label="98 Auto home"
           onClick={() => setMenuOpen(false)}
           className="group relative z-50 flex shrink-0 items-center gap-2.5"
         >
@@ -59,8 +59,8 @@ export default function Navbar() {
             <ArrowUpRight size={25} strokeWidth={2.4} />
           </span>
 
-          <span className="text-lg font-semibold tracking-[-0.06em] sm:text-xl">
-            CAR<span className="text-[#ff4d12]">SOURCER</span>
+          <span className="text-lg font-semibold tracking-[-0.06em] sm:text-xl text-black">
+            98 <span className="text-[#ff4d12]">AUTO</span>
           </span>
         </Link>
 
