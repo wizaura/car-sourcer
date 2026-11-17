@@ -60,13 +60,13 @@ function emailLayout(content: string) {
                         <tr>
                             <td style="padding:25px 35px;background:${BRAND.black};">
                                 <p style="margin:0;color:#ffffff;font-size:13px;font-weight:600;">
-                                    CAR SOURCER
+                                    98 AUTO
                                 </p>
                                 <p style="margin:8px 0 0;color:#a9a5a2;font-size:12px;line-height:20px;">
                                     Your trusted connection to premium vehicles from Dubai.
                                 </p>
                                 <p style="margin:18px 0 0;color:#77716d;font-size:11px;">
-                                    © ${new Date().getFullYear()} Car Sourcer. All rights reserved.
+                                    © ${new Date().getFullYear()} 98 Auto. All rights reserved.
                                 </p>
                             </td>
                         </tr>
@@ -112,7 +112,7 @@ function adminEmail(data: {
                 </h1>
 
                 <p style="margin:0;color:${BRAND.muted};font-size:14px;line-height:24px;">
-                    A new vehicle enquiry has been submitted through the Car Sourcer website.
+                    A new vehicle enquiry has been submitted through the 98 Auto website.
                 </p>
 
                 <div style="margin-top:30px;padding:20px;background:${BRAND.background};border-radius:12px;">
@@ -151,7 +151,7 @@ function adminEmail(data: {
                 <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:30px;">
                     <tr>
                         <td style="border-radius:8px;background:${BRAND.orange};">
-                            <a href="mailto:${encodeURIComponent(data.email)}?subject=${encodeURIComponent("Re: Your Car Sourcer vehicle enquiry")}"
+                            <a href="mailto:${encodeURIComponent(data.email)}?subject=${encodeURIComponent("Re: Your 98 Auto vehicle enquiry")}"
                                style="display:inline-block;padding:14px 23px;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;">
                                 Reply to customer →
                             </a>
@@ -160,7 +160,7 @@ function adminEmail(data: {
                 </table>
 
                 <p style="margin:25px 0 0;font-size:11px;color:#a3948c;">
-                    This notification was generated automatically by the Car Sourcer website.
+                    This notification was generated automatically by the 98 Auto website.
                 </p>
             </td>
         </tr>
@@ -182,7 +182,7 @@ function customerEmail(fullName: string) {
                 </h1>
 
                 <p style="margin:0;font-size:15px;line-height:27px;color:${BRAND.muted};">
-                    Your vehicle enquiry has successfully reached our team. We appreciate your interest in Car Sourcer.
+                    Your vehicle enquiry has successfully reached our team. We appreciate your interest in 98 Auto.
                 </p>
 
                 <div style="margin:30px 0;padding:24px;background:${BRAND.background};border-radius:12px;">
@@ -227,7 +227,7 @@ function customerEmail(fullName: string) {
                 </h3>
 
                 <p style="margin:0;font-size:13px;color:${BRAND.muted};">
-                    The Car Sourcer Team
+                    The 98 Auto Team
                 </p>
             </td>
         </tr>
@@ -320,12 +320,12 @@ Reply to: ${email}
             resend.emails.send({
                 from: FROM_EMAIL,
                 to: email,
-                subject: "We've received your vehicle enquiry | Car Sourcer",
+                subject: "We've received your vehicle enquiry | 98 Auto",
                 html: customerHtml,
                 text: `
 Hi ${fullName},
 
-Thank you for contacting Car Sourcer.
+Thank you for contacting 98 Auto.
 
 Your vehicle enquiry has been received successfully. Our team will review your requirements and get back to you.
 
@@ -333,7 +333,7 @@ From sourcing and inspection to export documentation and delivery, we're here to
 
 Find the right car. Make it yours.
 
-The Car Sourcer Team
+The 98 Auto Team
                 `.trim(),
             }),
         ]);
