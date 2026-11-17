@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import BrandButton from "@/components/ui/BrandButton";
+import Image from "next/image";
 
 const navItems = [
   { label: "Countries", href: "#countries" },
@@ -47,21 +48,24 @@ export default function Navbar() {
           : "border-b border-transparent bg-transparent",
       ].join(" ")}
     >
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-3.5 transition-all duration-300 sm:px-10 lg:px-14 lg:py-5">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-2 transition-all duration-300 sm:px-10 lg:px-14 lg:py-3">
         {/* Brand */}
         <Link
           href="/"
           aria-label="98 Auto home"
           onClick={() => setMenuOpen(false)}
-          className="group relative z-50 flex shrink-0 items-center gap-2.5"
+          className="group relative z-50 flex shrink-0 items-center"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-sm bg-[#ff4d12] text-white transition-transform duration-300 group-hover:rotate-[-5deg] sm:h-10 sm:w-10">
-            <ArrowUpRight size={25} strokeWidth={2.4} />
-          </span>
-
-          <span className="text-lg font-semibold tracking-[-0.06em] sm:text-xl text-black">
-            98 <span className="text-[#ff4d12]">AUTO</span>
-          </span>
+          <Image
+            src="/logo-1.png"
+            alt="98 Auto"
+            width={160}
+            height={64}
+            priority
+            fetchPriority="high"
+            sizes="160px"
+            className="h-12 w-auto object-contain sm:h-16"
+          />
         </Link>
 
         {/* Desktop navigation */}

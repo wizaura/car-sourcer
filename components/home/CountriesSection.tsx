@@ -1,5 +1,9 @@
 
-import { ArrowUpRight } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { ArrowUpRight, ArrowLeft } from "lucide-react";
+
 import {
     SA,
     KW,
@@ -8,6 +12,7 @@ import {
     ZA,
     IR,
 } from "country-flag-icons/react/3x2";
+
 import type { FlagComponent } from "country-flag-icons/react/3x2";
 import BrandButton from "../ui/BrandButton";
 
@@ -56,13 +61,216 @@ const countries: Country[] = [
     },
 ];
 
+function CountryCard({
+    country,
+    index,
+}: {
+    country: Country;
+    index: number;
+}) {
+    const { name, Flag, description } = country;
+    const [isFlipped, setIsFlipped] = useState(false);
+
+    const handleFrontClick = () => {
+        // Only use click-based flipping on mobile/touch devices.
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            setIsFlipped(true);
+        }
+    };
+
+    const handleBack = () => {
+        setIsFlipped(false);
+    };
+
+    const handleCountrySelect = () => {
+        window.dispatchEvent(
+            new CustomEvent("country-url-change", {
+                detail: { country: name },
+            })
+        );
+    };
+
+    return (
+        <article className="group relative rounded-[28px] outline-none [perspective:1000px]">
+            <div
+                className={[
+                    "relative grid",
+                    "transition-transform duration-700",
+                    "ease-[cubic-bezier(0.2,0.8,0.2,1)]",
+                    "[transform-style:preserve-3d]",
+                    "motion-reduce:transition-none",
+                    isFlipped
+                        ? "[transform:rotateY(180deg)]"
+                        : "md:group-hover:[transform:rotateY(180deg)]",
+                ].join(" ")}
+            >
+                {/* FRONT */}
+                <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={handleFrontClick}
+                    onKeyDown={(event) => {
+                        if (
+                            event.key === "Enter" ||
+                            event.key === " "
+                        ) {
+                            event.preventDefault();
+                            handleFrontClick();
+                        }
+                    }}
+                    aria-label={`View delivery information for ${name}`}
+                    className={[
+                        "relative z-10 col-start-1 row-start-1",
+                        "flex min-h-[390px] flex-col justify-between",
+                        "overflow-hidden rounded-[28px]",
+                        "border border-[#e9ddd6] bg-white/50 p-6 sm:p-7",
+                        "[backface-visibility:hidden]",
+                        "cursor-pointer",
+                        isFlipped
+                            ? "pointer-events-none"
+                            : "md:group-hover:pointer-events-none",
+                    ].join(" ")}
+                >
+                    {/* Background glow */}
+                    <div
+                        className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#ff4d12]/[0.07] blur-3xl transition-all duration-700 group-hover:scale-150"
+                        aria-hidden="true"
+                    />
+
+                    <div className="relative z-10 flex items-center justify-between">
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8d7c73]">
+                            Delivery destination
+                        </span>
+
+                        <span className="font-mono text-xs text-[#b6a69d]">
+                            0{index + 1} / 06
+                        </span>
+                    </div>
+
+                    {/* Flag */}
+                    <div className="relative flex flex-1 items-center justify-center py-8">
+                        <div
+                            className="absolute h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(255,77,18,0.15),transparent_68%)]"
+                            aria-hidden="true"
+                        />
+
+                        <div className="relative h-44 w-44 overflow-hidden rounded-full border-[6px] border-white shadow-[0_25px_65px_-20px_rgba(0,0,0,0.3)] ring-1 ring-[#e9ddd6] transition-transform duration-700 group-hover:scale-105">
+                            <Flag
+                                title={name}
+                                preserveAspectRatio="xMidYMid slice"
+                                className="h-full w-full"
+                            />
+
+                            <div
+                                className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.3),transparent_55%)]"
+                                aria-hidden="true"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Country name */}
+                    <div className="relative z-10 flex items-end justify-between border-t border-[#eee5df] pt-5">
+                        <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#a3948c]">
+                                International shipping
+                            </p>
+
+                            <h3 className="mt-1 text-[26px] font-medium tracking-[-0.045em] text-[#171311]">
+                                {name}
+                            </h3>
+                        </div>
+
+                        <div className="mb-1 flex h-10 w-10 items-center justify-center rounded-full border border-[#e9ddd6] text-[#ff4d12] transition-all duration-300 group-hover:border-[#ff4d12] group-hover:bg-[#ff4d12] group-hover:text-white">
+                            <ArrowUpRight size={19} />
+                        </div>
+                    </div>
+
+                    {/* Mobile tap hint */}
+                    <span className="absolute right-6 top-16 text-[10px] font-medium uppercase tracking-wider text-[#a3948c] md:hidden">
+                        Tap to explore
+                    </span>
+                </div>
+
+                {/* BACK */}
+                <div
+                    className={[
+                        "relative z-20 col-start-1 row-start-1",
+                        "flex min-h-[390px] flex-col justify-between",
+                        "overflow-hidden rounded-[28px]",
+                        "border border-[#ff4d12] bg-[#ff4d12]",
+                        "p-6 text-[#171311] sm:p-8",
+                        "[backface-visibility:hidden]",
+                        "[transform:rotateY(180deg)]",
+                        isFlipped
+                            ? "pointer-events-auto"
+                            : "pointer-events-none md:group-hover:pointer-events-auto",
+                    ].join(" ")}
+                >
+                    <div>
+                        <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-black/60">
+                                Your destination
+                            </span>
+
+                            <span className="font-mono text-xs text-black/50">
+                                0{index + 1}
+                            </span>
+                        </div>
+
+                        {/* Mobile back button */}
+                        <button
+                            type="button"
+                            onClick={handleBack}
+                            className="mt-5 inline-flex items-center gap-2 rounded-full border border-black/20 px-3 py-2 text-xs font-semibold transition hover:bg-black/10 md:hidden"
+                        >
+                            <ArrowLeft size={14} />
+                            Back
+                        </button>
+
+                        <div className="mt-8 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-white/40 shadow-lg">
+                            <Flag
+                                title={name}
+                                preserveAspectRatio="xMidYMid slice"
+                                className="h-full w-full"
+                            />
+                        </div>
+
+                        <h3 className="mt-6 max-w-[360px] text-[30px] font-medium leading-[1.05] tracking-[-0.055em]">
+                            Delivering to {name}
+                        </h3>
+
+                        <p className="mt-4 text-lg leading-7 text-black/70">
+                            {description}
+                        </p>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="relative z-50 mt-8">
+                        <BrandButton
+                            href={`/?country=${encodeURIComponent(name)}#contact`}
+                            onClick={handleCountrySelect}
+                            variant="dark"
+                            size="lg"
+                            arrow="diagonal"
+                            className="relative z-50 w-full"
+                        >
+                            Source a car for {name}
+                        </BrandButton>
+                    </div>
+                </div>
+            </div>
+        </article>
+    );
+}
+
 export default function CountriesServed() {
     return (
         <section
             id="countries"
-            className="overflow-hidden bg-[#fff] text-[#11100f]"
+            className="overflow-hidden bg-white text-[#11100f]"
         >
             <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-10 sm:py-20 lg:px-14">
+
                 {/* Header */}
                 <div className="flex flex-col items-center text-center">
                     <span className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-lg font-medium text-[#5c514b]">
@@ -88,148 +296,12 @@ export default function CountriesServed() {
 
                 {/* Country Cards */}
                 <div className="mt-12 grid gap-5 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
-                    {countries.map(({ name, Flag, description }, index) => (
-                        <article
-                            key={name}
-                            className="group relative rounded-[28px] outline-none [perspective:1000px]"
-                        >
-                            <div
-                                className="
-                  relative grid
-                  transition-transform duration-700
-                  ease-[cubic-bezier(0.2,0.8,0.2,1)]
-                  [transform-style:preserve-3d]
-                  group-hover:[transform:rotateY(180deg)]
-                  group-focus-within:[transform:rotateY(180deg)]
-                  motion-reduce:transition-none
-                "
-                            >
-                                {/* FRONT */}
-                                <div
-                                    className="
-                    relative z-10 col-start-1 row-start-1
-                    flex min-h-[390px] flex-col justify-between
-                    overflow-hidden rounded-[28px]
-                    border border-[#e9ddd6] bg-white/50 p-6 sm:p-7
-                    [backface-visibility:hidden]
-                    [pointer-events:auto]
-                    group-hover:pointer-events-none
-                    group-focus-within:pointer-events-none
-                  "
-                                >
-                                    {/* Background Glow */}
-                                    <div
-                                        className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#ff4d12]/[0.07] blur-3xl transition-all duration-700 group-hover:scale-150"
-                                        aria-hidden="true"
-                                    />
-
-                                    <div className="relative z-10 flex items-center justify-between">
-                                        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8d7c73]">
-                                            Delivery destination
-                                        </span>
-
-                                        <span className="font-mono text-xs text-[#b6a69d]">
-                                            0{index + 1} / 06
-                                        </span>
-                                    </div>
-
-                                    {/* Flag */}
-                                    <div className="relative flex flex-1 items-center justify-center py-8">
-                                        <div
-                                            className="absolute h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(255,77,18,0.15),transparent_68%)]"
-                                            aria-hidden="true"
-                                        />
-
-                                        <div className="relative h-44 w-44 overflow-hidden rounded-full border-[6px] border-white shadow-[0_25px_65px_-20px_rgba(0,0,0,0.3)] ring-1 ring-[#e9ddd6] transition-transform duration-700 group-hover:scale-105">
-                                            <Flag
-                                                title={name}
-                                                preserveAspectRatio="xMidYMid slice"
-                                                className="h-full w-full"
-                                            />
-
-                                            <div
-                                                className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.3),transparent_55%)]"
-                                                aria-hidden="true"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    {/* Country Name */}
-                                    <div className="relative z-10 flex items-end justify-between border-t border-[#eee5df] pt-5">
-                                        <div>
-                                            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#a3948c]">
-                                                International shipping
-                                            </p>
-
-                                            <h3 className="mt-1 text-[26px] font-medium tracking-[-0.045em] text-[#171311]">
-                                                {name}
-                                            </h3>
-                                        </div>
-
-                                        <div className="mb-1 flex h-10 w-10 items-center justify-center rounded-full border border-[#e9ddd6] text-[#ff4d12] transition-all duration-300 group-hover:border-[#ff4d12] group-hover:bg-[#ff4d12] group-hover:text-white">
-                                            <ArrowUpRight size={19} />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* BACK */}
-                                <div
-                                    className="
-                    relative z-20 col-start-1 row-start-1
-                    flex min-h-[390px] flex-col justify-between
-                    overflow-hidden rounded-[28px]
-                    border border-[#ff4d12] bg-[#ff4d12]
-                    p-7 text-[#171311] sm:p-8
-                    [backface-visibility:hidden]
-                    [transform:rotateY(180deg)]
-                    pointer-events-none
-                    group-hover:pointer-events-auto
-                    group-focus-within:pointer-events-auto
-                  "
-                                >
-                                    <div>
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-black/60">
-                                                Your destination
-                                            </span>
-
-                                            <span className="font-mono text-xs text-black/50">
-                                                0{index + 1}
-                                            </span>
-                                        </div>
-
-                                        <div className="mt-8 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-white/40 shadow-lg">
-                                            <Flag
-                                                title={name}
-                                                preserveAspectRatio="xMidYMid slice"
-                                                className="h-full w-full"
-                                            />
-                                        </div>
-
-                                        <h3 className="mt-6 max-w-[360px] text-[30px] font-medium leading-[1.05] tracking-[-0.055em]">
-                                            Delivering to {name}
-                                        </h3>
-
-                                        <p className="mt-4 text-lg leading-7 text-black/70">
-                                            {description}
-                                        </p>
-                                    </div>
-
-                                    {/* Clickable CTA */}
-                                    <div className="relative z-50 mt-8 pointer-events-auto">
-                                        <BrandButton
-                                            href={`?country=${encodeURIComponent(name)}#contact`}
-                                            variant="dark"
-                                            size="lg"
-                                            arrow="diagonal"
-                                            className="relative z-50 w-full"
-                                        >
-                                            Source a car for {name}
-                                        </BrandButton>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
+                    {countries.map((country, index) => (
+                        <CountryCard
+                            key={country.name}
+                            country={country}
+                            index={index}
+                        />
                     ))}
                 </div>
 

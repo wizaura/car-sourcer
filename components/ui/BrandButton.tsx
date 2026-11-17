@@ -4,18 +4,33 @@ import {
   ArrowRight,
   ArrowUpRight,
 } from "lucide-react";
-import type { ReactNode, ButtonHTMLAttributes } from "react";
 
-type BrandButtonProps = {
-  href?: string;
+import type {
+  ReactNode,
+  ButtonHTMLAttributes,
+  AnchorHTMLAttributes,
+} from "react";
+
+type BrandButtonBaseProps = {
   children: ReactNode;
   variant?: "orange" | "dark" | "light" | "outline";
   size?: "sm" | "md" | "lg";
   className?: string;
   arrow?: "right" | "diagonal" | "none";
-  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   disabled?: boolean;
 };
+
+type BrandButtonProps =
+  | (BrandButtonBaseProps & {
+      href: string;
+      onClick?: AnchorHTMLAttributes<HTMLAnchorElement>["onClick"];
+      type?: never;
+    })
+  | (BrandButtonBaseProps & {
+      href?: undefined;
+      onClick?: ButtonHTMLAttributes<HTMLButtonElement>["onClick"];
+      type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
+    });
 
 const variants = {
   orange: {
@@ -70,16 +85,16 @@ const sizes = {
   },
 };
 
-export default function BrandButton({
-  href,
-  children,
-  variant = "orange",
-  size = "md",
-  className = "",
-  arrow = "right",
-  type = "button",
-  disabled = false,
-}: BrandButtonProps) {
+export default function BrandButton(props: BrandButtonProps) {
+  const {
+    children,
+    variant = "orange",
+    size = "md",
+    className = "",
+    arrow = "right",
+    disabled = false,
+  } = props;
+
   const style = variants[variant];
   const dimension = sizes[size];
 
@@ -141,34 +156,34 @@ export default function BrandButton({
     </>
   );
 
-  if (href) {
+  const interactionClass = disabled
+    ? "cursor-not-allowed opacity-60"
+    : "cursor-pointer hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]";
+
+  // Link variant
+  if (props.href !== undefined) {
     return (
       <Link
-        href={disabled ? "#" : href}
+        href={disabled ? "#" : props.href}
         aria-disabled={disabled || undefined}
         tabIndex={disabled ? -1 : undefined}
-        className={[
-          baseClass,
-          disabled
-            ? "pointer-events-none cursor-not-allowed opacity-60"
-            : "cursor-pointer hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
-        ].join(" ")}
+        onClick={props.onClick}
+        className={`${baseClass} ${interactionClass} ${
+          disabled ? "pointer-events-none" : ""
+        }`}
       >
         {content}
       </Link>
     );
   }
 
+  // Button variant
   return (
     <button
-      type={type}
+      type={props.type ?? "button"}
       disabled={disabled}
-      className={[
-        baseClass,
-        disabled
-          ? "cursor-not-allowed opacity-60"
-          : "cursor-pointer hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
-      ].join(" ")}
+      onClick={props.onClick}
+      className={`${baseClass} ${interactionClass}`}
     >
       {content}
     </button>

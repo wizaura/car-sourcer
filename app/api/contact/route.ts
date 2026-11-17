@@ -36,7 +36,7 @@ function emailLayout(content: string) {
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Car Sourcer</title>
+        <title>98 Auto</title>
     </head>
     <body style="margin:0;padding:0;background:${BRAND.background};font-family:Arial,Helvetica,sans-serif;color:${BRAND.black};">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BRAND.background};padding:40px 15px;">
@@ -47,7 +47,7 @@ function emailLayout(content: string) {
                         <tr>
                             <td style="background:${BRAND.black};padding:28px 35px;">
                                 <div style="font-size:25px;font-weight:700;letter-spacing:-1px;color:#ffffff;">
-                                    CAR SOURCER<span style="color:${BRAND.orange};">.</span>
+                                    98 AUTO<span style="color:${BRAND.orange};">.</span>
                                 </div>
                                 <div style="margin-top:7px;font-size:11px;letter-spacing:2px;color:#a9a5a2;">
                                     FIND THE RIGHT CAR. MAKE IT YOURS.

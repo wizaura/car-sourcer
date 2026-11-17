@@ -47,7 +47,7 @@ export default function ContactForm() {
 
         const syncCountryFromUrl = () => {
             const params = new URLSearchParams(window.location.search);
-            console.log(params,'ss')
+            console.log(params, 'ss')
             const selectedCountry = params.get("country");
 
             if (!selectedCountry) return;
@@ -215,7 +215,7 @@ export default function ContactForm() {
 
                         <div className="mt-auto hidden pt-14 lg:block">
                             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#a3948c]">
-                                CAR SOURCER
+                                98 AUTO
                             </p>
                             <p className="mt-2 text-sm text-[#796a63]">
                                 Find the right car. Make it yours.
@@ -249,16 +249,19 @@ export default function ContactForm() {
                                     {feedback}
                                 </p>
 
-                                <button
+                                <BrandButton
                                     type="button"
                                     onClick={() => {
                                         setStatus("idle");
                                         setFeedback("");
                                     }}
-                                    className="mt-8 rounded-xl bg-[#171614] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#ff4d12]"
+                                    variant="dark"
+                                    size="lg"
+                                    arrow="none"
+                                    className="mt-8"
                                 >
                                     Send another enquiry
-                                </button>
+                                </BrandButton>
                             </div>
                         ) : (
                             <>

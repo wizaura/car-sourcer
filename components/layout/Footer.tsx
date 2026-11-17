@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import CurrentYear from "../ui/CurrentYear";
 import BackToTop from "../ui/BackToTop";
+import Image from "next/image";
 
 const navigation = [
     { label: "Home", href: "/" },
@@ -44,9 +45,18 @@ export default function Footer() {
                     <div>
                         <Link
                             href="/"
-                            className="inline-flex items-center text-3xl font-semibold tracking-[-0.07em] sm:text-4xl"
+                            aria-label="98 Auto home"
+                            className="inline-flex shrink-0 items-center"
                         >
-                            98 Auto<span className="text-[#ff4d12]">.</span>
+                            <Image
+                                src="/logo-black-1.png"
+                                alt="98 Auto"
+                                width={160}
+                                height={48}
+                                priority
+                                sizes="160px"
+                                className="h-12 w-auto object-contain sm:h-16"
+                            />
                         </Link>
 
                         <p className="mt-7 max-w-xl text-2xl font-medium leading-snug tracking-[-0.04em] text-[#faf5f2]/80 sm:text-3xl lg:text-4xl">
@@ -69,7 +79,7 @@ export default function Footer() {
                                     className="opacity-0 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
                                 />
                                 <Mail size={17} strokeWidth={1.5} />
-                                info@carsourcer.com
+                                contact@98auto.com
                             </a>
 
                             <div className="flex items-center gap-3 text-base text-white/75">
@@ -140,7 +150,7 @@ export default function Footer() {
                         <ul className="space-y-4">
                             <li>
                                 <a
-                                    href="mailto:info@carsourcer.com"
+                                    href="mailto:contact@98auto.com"
                                     className="text-sm text-white/70 transition-colors hover:text-white"
                                 >
                                     Email us
@@ -207,7 +217,7 @@ export default function Footer() {
                 {/* Bottom bar */}
                 <div className="flex flex-col gap-5 border-t border-white/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
                     <p className="text-xs text-white/40">
-                        © <CurrentYear /> Car Sourcer. All rights reserved.
+                        © <CurrentYear /> 98 Auto. All rights reserved.
                     </p>
 
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
