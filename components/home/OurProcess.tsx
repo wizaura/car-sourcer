@@ -6,6 +6,7 @@ import {
     ArrowUpRight,
     ClipboardList,
     FileText,
+    Flag,
     Search,
     ShieldCheck,
     Truck,
@@ -561,31 +562,26 @@ export default function OurProcess() {
                         initial={
                             shouldReduceMotion
                                 ? false
-                                : { opacity: 0, y: 35, filter: "blur(8px)" }
+                                : { opacity: 0, y: 20 }
                         }
                         whileInView={{
                             opacity: 1,
                             y: 0,
-                            filter: "blur(0px)",
                         }}
                         viewport={{ once: true, amount: 0.4 }}
                         transition={{
-                            duration: 0.8,
+                            duration: 0.7,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="relative mt-14 flex items-center gap-5 pl-1 lg:mt-10 lg:justify-center lg:pl-0"
+                        className="relative mt-14 flex items-center gap-4 pl-1 lg:mt-10 lg:justify-center lg:pl-0"
                     >
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#171614] text-white">
-                            <Truck size={19} />
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#171614] text-white">
+                            <Flag size={19} strokeWidth={1.8} />
                         </div>
 
-                        <div>
+                        <div className="min-w-0">
                             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#ff4d12]">
-                                Destination reached
-                            </p>
-
-                            <p className="mt-1 text-xl font-medium tracking-tight">
-                                Your car. Your way.
+                                 The right car. The right destination.
                             </p>
                         </div>
                     </motion.div>
